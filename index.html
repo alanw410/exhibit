@@ -12,6 +12,8 @@
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
   
 </head>
 
@@ -81,7 +83,36 @@
 	  <div class = "col-sm text-center">
 	  <ul class="list-unstyled" id="tutorial-menu">
         </ul>
-		<p>Your current location is: <b>Entrance</b></p>
+		<p>Your last location was: <b id= "locale">Entrance</b></p>
+		<button type="button" class="btn btn-primary" onclick="myFunction1()">Change Location</button>
+		<script>
+		var dict = [];
+		dict[12] = "Student Centre";
+		dict[21] = "M010";
+		dict[38] = "Elevator 1-G";
+		dict[0] = "Elevator 2-G";
+		dict[33] = "Courtyard";
+		dict[49] = "Ground Foyer";
+		dict[18] = "Level 1 Foyer";
+		dict[30] = "Level 2 Foyer";
+		dict[39] = "Elevator 1-1";
+		dict[43] = "Elevator 2-1";
+		dict[47] = "Elevator 1-2";
+		dict[46] = "Elevator 2-2";
+		dict[22] = "Toilets";
+		dict[19] = "Bridge Start";
+		dict[20] = "Bridge End";
+		
+		
+function myFunction1() {
+	var cKiosk = prompt('Enter Kiosk Number:');
+  wayfinder.setKiosk(cKiosk);
+  
+  document.getElementById("locale").innerHTML = dict[cKiosk];
+}
+</script>
+
+		
 		</div>
     </div>
   </div>
