@@ -49,6 +49,24 @@
         <script src="https://static.3dwayfinder.com/projects/shared/js/minified/frak-stable.min.js"></script>
         <script src="https://static.3dwayfinder.com/projects/shared/js/minified/Wayfinder3D.min.js"></script>
 		<script type="text/javascript">
+		var dict = [];
+		dict[9] = "Entrance";
+		dict[12] = "Student Centre";
+		dict[21] = "M010";
+		dict[38] = "Elevator 1-G";
+		dict[0] = "Elevator 2-G";
+		dict[33] = "Courtyard";
+		dict[49] = "Ground Foyer";
+		dict[18] = "Level 1 Foyer";
+		dict[30] = "Level 2 Foyer";
+		dict[39] = "Elevator 1-1";
+		dict[43] = "Elevator 2-1";
+		dict[47] = "Elevator 1-2";
+		dict[46] = "Elevator 2-2";
+		dict[22] = "Toilets";
+		dict[19] = "Bridge Start";
+		dict[20] = "Bridge End";		
+		
 				var noden = window.location.hash.substr(1);
 				if(noden === "") {
 					noden = 9;
@@ -88,28 +106,12 @@
 	  <div class = "col-sm text-center">
 	  <ul class="list-unstyled" id="tutorial-menu">
         </ul>
-		<p>Your last location was: <b id= "locale">Entrance</b></p>
+		<p>Your last location was:</p> <p><b id= "locale">Entrance</b></p> 
 		<button type="button" class="btn btn-primary" onclick="myFunction1()">Change Location</button>
 		<script>
-		
-		var dict = [];
-		dict[9] = "Entrance";
-		dict[12] = "Student Centre";
-		dict[21] = "M010";
-		dict[38] = "Elevator 1-G";
-		dict[0] = "Elevator 2-G";
-		dict[33] = "Courtyard";
-		dict[49] = "Ground Foyer";
-		dict[18] = "Level 1 Foyer";
-		dict[30] = "Level 2 Foyer";
-		dict[39] = "Elevator 1-1";
-		dict[43] = "Elevator 2-1";
-		dict[47] = "Elevator 1-2";
-		dict[46] = "Elevator 2-2";
-		dict[22] = "Toilets";
-		dict[19] = "Bridge Start";
-		dict[20] = "Bridge End";
+
 		wayfinder.setKiosk(noden);
+		
 		document.getElementById("locale").innerHTML = dict[noden];
 		
 function myFunction1() {
@@ -117,6 +119,7 @@ function myFunction1() {
   wayfinder.setKiosk(cKiosk);
   
   document.getElementById("locale").innerHTML = dict[cKiosk];
+  wayfinder.showKiosk();
 }
 </script>
 
