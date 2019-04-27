@@ -93,6 +93,7 @@
 		<script>
 		
 		var dict = [];
+		dict[9] = "Entrance";
 		dict[12] = "Student Centre";
 		dict[21] = "M010";
 		dict[38] = "Elevator 1-G";
@@ -108,13 +109,14 @@
 		dict[22] = "Toilets";
 		dict[19] = "Bridge Start";
 		dict[20] = "Bridge End";
-		
+		wayfinder.setKiosk(noden);
 		document.getElementById("locale").innerHTML = dict[noden];
+		
 function myFunction1() {
 	var cKiosk = prompt('Enter Kiosk Number:');
-  wayfinder.setKiosk(cKiosk);
+  wayfinder.setKiosk(noden);
   
-  document.getElementById("locale").innerHTML = dict[cKiosk];
+  document.getElementById("locale").innerHTML = dict[noden];
 }
 </script>
 
