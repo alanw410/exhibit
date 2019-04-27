@@ -29,7 +29,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-items active">
-            <a class="nav-link" href="#12">Home
+            <a class="nav-link" href="#">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -91,6 +91,7 @@
 		<p>Your last location was: <b id= "locale">Entrance</b></p>
 		<button type="button" class="btn btn-primary" onclick="myFunction1()">Change Location</button>
 		<script>
+		
 		var dict = [];
 		dict[12] = "Student Centre";
 		dict[21] = "M010";
@@ -108,7 +109,7 @@
 		dict[19] = "Bridge Start";
 		dict[20] = "Bridge End";
 		
-		
+		document.getElementById("locale").innerHTML = dict[noden];
 function myFunction1() {
 	var cKiosk = prompt('Enter Kiosk Number:');
   wayfinder.setKiosk(cKiosk);
