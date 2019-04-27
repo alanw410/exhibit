@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Exhibition Wayfinder</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Exhibition Wayfinder</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-items active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-items">
+            <a class="nav-link" href="#">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+	  <p>
+		<canvas id="map" width="500em" height="500em" style="margin-top: 3em"><canvas>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.11/jquery.mousewheel.min.js"></script>
+        <script src="http://static.3dwayfinder.com/projects/shared/js/minified/frak-stable.min.js"></script>
+        <script src="http://static.3dwayfinder.com/projects/shared/js/minified/Wayfinder3D.min.js"></script>
+		<script type="text/javascript">
+				var wayfinder;
+				
+			$(function(){ //Make sure that the page is loaded.
+			  wayfinder = new Wayfinder3D();
+			  WayfinderAPI.LOCATION = "http://api.3dwayfinder.com";
+			  wayfinder.options.assetsLocation = 'http://static.3dwayfinder.com/shared/';
+			  wayfinder.open("22535955efc4a6a6e7d1feaee72b5b89");
+			  function onPOIClick(event){
+					if($(this).attr("data-poi-index")){
+						wayfinder.showPath(wayfinder.pois[ $(this).attr("data-poi-index")].getNode()); // will start path animation to clicked location
+					}
+					 $(".reveal").removeClass('active');
+					 
+					 $(this).addClass('list-group-item reveal active');
+				}
+			  wayfinder.cbOnDataLoaded = function(){
+					var poi;
+					var menu = $("#tutorial-menu");
+					for(var i in wayfinder.pois){
+						poi = wayfinder.pois[i];
+						if(poi && poi.getShowInMenu()){ // Check if we wan't display this POI in the menu
+						   menu.append("<li data-poi-index='"+i+"' class='list-group-item reveal'><a hred='#'>"+wayfinder.pois[i].getName(wayfinder.getLanguage())+"</a></li>"); // Hold the POI ID in the HTML element. You can also pass the POI dynamically into the function
+						}
+					}
+					$("#tutorial-menu li").click(onPOIClick);
+				}
+			});
+		</script>
+</script>
+	</p>
+        <ul class="list-unstyled" id="tutorial-menu">
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
