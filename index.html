@@ -29,7 +29,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-items active">
-            <a class="nav-link" href="#">Home
+            <a class="nav-link" href="#12">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -49,6 +49,10 @@
         <script src="https://static.3dwayfinder.com/projects/shared/js/minified/frak-stable.min.js"></script>
         <script src="https://static.3dwayfinder.com/projects/shared/js/minified/Wayfinder3D.min.js"></script>
 		<script type="text/javascript">
+				var noden = window.location.hash.substr(1);
+				if(noden === "") {
+					noden = 9;
+				}
 				var wayfinder;
 				
 			$(function(){ //Make sure that the page is loaded.
@@ -56,6 +60,7 @@
 			  WayfinderAPI.LOCATION = "https://api.3dwayfinder.com";
 			  wayfinder.options.assetsLocation = 'https://static.3dwayfinder.com/shared/';
 			  wayfinder.open("22535955efc4a6a6e7d1feaee72b5b89");
+			  wayfinder.setKiosk(noden);
 			  function onPOIClick(event){
 					if($(this).attr("data-poi-index")){
 						wayfinder.showPath(wayfinder.pois[ $(this).attr("data-poi-index")].getNode()); // will start path animation to clicked location
