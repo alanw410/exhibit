@@ -33,6 +33,10 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
+		  <li class="nav-items ">
+            <a class="nav-link" href="parking.html">Parking
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -74,7 +78,7 @@
 					var menu = $("#tutorial-menu");
 					for(var i in wayfinder.pois){
 						poi = wayfinder.pois[i];
-						if(poi && poi.getShowInMenu()){ // Check if we wan't display this POI in the menu
+						if(poi && poi.getShowInMenu()){ // Check if we want display this POI in the menu
 						   menu.append("<li data-poi-index='"+i+"' class='list-group-item reveal'><a hred='#'>"+wayfinder.pois[i].getName(wayfinder.getLanguage())+"</a></li>"); // Hold the POI ID in the HTML element. You can also pass the POI dynamically into the function
 						}
 					}
